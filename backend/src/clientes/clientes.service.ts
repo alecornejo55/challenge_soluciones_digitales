@@ -103,6 +103,11 @@ export class ClientesService {
       };
     } catch (error) {
       this.logger.error(error);
+      if (error?.code == 'ER_DUP_ENTRY') {
+        throw new BadRequestException(
+          'El dni ingresado ya existe en otro cliente',
+        );
+      }
       throw new InternalServerErrorException(
         'Error en el servidor, chequear logs',
       );
