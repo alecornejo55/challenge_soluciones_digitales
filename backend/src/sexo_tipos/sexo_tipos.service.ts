@@ -10,7 +10,11 @@ export class SexoTiposService {
     private readonly sexoTipoRepository: Repository<SexoTipo>,
   ) {}
   async findAll() {
-    return this.sexoTipoRepository.find();
+    return this.sexoTipoRepository.find({
+      order: {
+        id: 'ASC',
+      },
+    });
   }
 
   async findOne(id: number): Promise<SexoTipo> {

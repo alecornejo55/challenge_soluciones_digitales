@@ -55,7 +55,12 @@ export class ClientesService {
   }
 
   async findAll(): Promise<Cliente[]> {
-    return this.clienteRepository.find({ relations: ['sexoTipo'] });
+    return this.clienteRepository.find({
+      relations: ['sexoTipo'],
+      order: {
+        id: 'ASC',
+      },
+    });
   }
 
   async findByDni(dni: string): Promise<Cliente[]> {
@@ -63,6 +68,7 @@ export class ClientesService {
       .createQueryBuilder('cliente')
       .where('cliente.dni like :dni', { dni: `${dni}%` })
       .leftJoinAndSelect('cliente.sexoTipo', 'sexoTipo')
+      .orderBy('dni', 'ASC')
       .getMany();
   }
 
