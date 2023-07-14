@@ -67,6 +67,10 @@ DB_USERNAME=root                   # Usuario base de datos
 DB_PASSWORD=root                   # Contrasela base de datos
 ```
 
+### Importante: 
+No cambiar el valor de `PORT` del archivo .env. Este puerto es necesario para que el frontend se pueda comunicar con el backend.
+
+
 ## Instrucciones de Uso
 
 1. Inicia el servidor backend:
